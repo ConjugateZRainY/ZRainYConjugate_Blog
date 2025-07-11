@@ -123,10 +123,10 @@ defaultContentLanguage = "zh" # 默认语言
     # imageHeight = 120
     
   # 社交链接
-  [params.socialIcons]
-    [[params.socialIcons.item]]
-      name = "github"
-      url = "https://github.com/ConjugateZRainY"
+  # [params.socialIcons]
+    # [[params.socialIcons.item]]
+      # name = "github"
+      # url = "https://github.com/ConjugateZRainY"
       
 # Hugo内置语法高亮
 [markup]
