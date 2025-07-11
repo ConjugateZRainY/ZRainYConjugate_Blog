@@ -104,10 +104,10 @@ defaultContentLanguage = "zh" # 默认语言
   # 资源文件配置（用于自定义CSS）
   [params.assets]
     disableHLJS = true # 使用Hugo内置的Chroma高亮，效果更好
-    favicon = "favicon.ico"
-    favicon16x16 = "favicon-16x16.png"
-    favicon32x32 = "favicon-32x32.png"
-    apple_touch_icon = "apple-touch-icon.png"
+    # favicon = "favicon.ico"
+    # favicon16x16 = "favicon-16x16.png"
+    # favicon32x32 = "favicon-32x32.png"
+    # apple_touch_icon = "apple-touch-icon.png"
 
   # 语言选择器
   [params.ShowLanguageSelector]
@@ -118,18 +118,15 @@ defaultContentLanguage = "zh" # 默认语言
     enabled = true
     title = "My Awesome Blog"
     subtitle = "Tech | Life | Thoughts"
-    imageUrl = "profile.png" # 放在 static/ 目录下
-    imageWidth = 120
-    imageHeight = 120
+    # imageUrl = "profile.png" # 放在 static/ 目录下
+    # imageWidth = 120
+    # imageHeight = 120
     
   # 社交链接
   [params.socialIcons]
     [[params.socialIcons.item]]
       name = "github"
       url = "https://github.com/ConjugateZRainY"
-    [[params.socialIcons.item]]
-      name = "twitter"
-      url = "https://twitter.com/YOUR_USERNAME"
       
 # Hugo内置语法高亮
 [markup]
