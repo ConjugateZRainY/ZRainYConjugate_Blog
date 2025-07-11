@@ -1,0 +1,67 @@
+# GitHub Actions 工作流配置文件：用于构建和部署 Hugo 网站到 GitHub Pages
+
+name: Deploy Hugo site to Pages
+
+on:
+  # 当代码被推送到主分支时触发
+  push:
+    branches:
+      - main  # 确保这里是你的主分支名 (main 或 master)
+
+  # 允许你从 Actions 标签页手动触发此工作流
+  workflow_dispatch:
+
+# 为工作流设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一个并发部署，防止旧的部署覆盖新的部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # 构建任务
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 步骤1：检出你的仓库代码
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive  # 非常重要：同时拉取主题子模块
+
+      # 步骤2：安装 Hugo CLI (使用你本地的版本或更新的版本)
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3 # 使用一个流行的、专门设置Hugo的Action
+        with:
+          hugo-version: '0.127.0' # 指定一个具体的版本，可以比你本地稍低或相同，建议使用稳定版
+          extended: true
+
+      # 步骤3：构建网站
+      # --minify 会压缩 HTML/CSS/JS 文件，减小网站体积
+      - name: Build
+        run: hugo --minify
+
+      # 步骤4：上传构建好的网站文件 (神器)
+      # 这个操作会把构建产物 (整个 public 文件夹) 打包，供下一步的部署任务使用
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  # 部署任务
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build  # 依赖于 'build' 任务成功完成
+    steps:
+      # 步骤5：部署到 GitHub Pages
+      # 这个操作会从上一步的 "神器" 中获取网站文件，并将其部署到 Pages 服务
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

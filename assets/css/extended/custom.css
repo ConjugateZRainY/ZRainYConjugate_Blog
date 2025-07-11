@@ -1,0 +1,29 @@
+/* 1. 引入网络字体 (使用字节跳动国内CDN，加速访问) */
+@import url('https://fonts.bytedance.com/css2?family=Fira+Code&family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap');
+
+/* 2. 应用字体 */
+/* 英文和默认字体使用 Inter，中文备选思源黑体 */
+body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+/* 中文强制优先使用思源黑体 */
+:lang(zh-cn) {
+    font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+/* 日文会自动回退到系统默认日文字体，如果需要可单独指定 */
+:lang(ja) {
+    /* font-family: 'Noto Sans JP', sans-serif; */
+}
+
+/* 代码块字体使用 Fira Code */
+code, pre, kbd, samp {
+    font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+/* 3. 夜间模式下 MathJax 公式颜色自动反转 (可选，PaperMod可能已处理) */
+[data-theme="dark"] .MathJax, 
+[data-theme="dark"] .MathJax_Display {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* --- 其他自定义样式可以加在下面 --- */

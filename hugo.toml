@@ -1,0 +1,140 @@
+baseURL = "https://ConjugateZRainY.github.io/ZRainYConjugate_Blog" # 替换为你的最终URL
+title = "My Awesome Blog"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[pagination]
+  pagerSize = 5  # 配置不一样了
+
+# 核心：多语言配置
+defaultContentLanguage = "zh" # 默认语言
+
+[languages]
+  # 中文配置
+  [languages.zh]
+    languageName = "🇨🇳 简体中文"
+    languageCode = "zh-cn"
+    contentDir = "content/chinese" # 中文内容目录
+    weight = 1
+    [languages.zh.params]
+      title = "我的博客"
+      description = "一个关于技术与生活的博客"
+    [languages.zh.menu]
+      [[languages.zh.menu.main]]
+        identifier = "archives"
+        name = "归档"
+        url = "/archives/"
+        weight = 10
+      [[languages.zh.menu.main]]
+        identifier = "tags"
+        name = "标签"
+        url = "/tags/"
+        weight = 20
+
+  # 英文配置
+  [languages.en]
+    languageName = "🇬🇧 English"
+    languageCode = "en-us"
+    contentDir = "content/english"
+    weight = 2
+    [languages.en.params]
+      title = "My Blog"
+      description = "A blog about tech and life"
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "archives"
+        name = "Archives"
+        url = "/archives/"
+        weight = 10
+      [[languages.en.menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags/"
+        weight = 20
+
+  # 日文配置
+  [languages.ja]
+    languageName = "🇯🇵 日本語"
+    languageCode = "ja"
+    contentDir = "content/japanese"
+    weight = 3
+    [languages.ja.params]
+      title = "私のブログ"
+      description = "技術と生活についてのブログ"
+    [languages.ja.menu]
+      [[languages.ja.menu.main]]
+        identifier = "archives"
+        name = "アーカイブ"
+        url = "/archives/"
+        weight = 10
+      [[languages.ja.menu.main]]
+        identifier = "tags"
+        name = "タグ"
+        url = "/tags/"
+        weight = 20
+
+# 主题参数配置
+[params]
+  env = "production" # "development" for dev
+  description = "A blog for all my thoughts"
+  author = "Your Name"
+
+  # 昼夜模式配置
+  defaultTheme = "auto" # "light", "dark" or "auto"
+  disableThemeToggle = false # 允许手动切换
+
+  # 页面加载进度条
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  
+  # 强制启用 MathJax
+  [params.math]
+    enable = true # PaperMod 使用这个参数来加载MathJax
+
+  # 资源文件配置（用于自定义CSS）
+  [params.assets]
+    disableHLJS = true # 使用Hugo内置的Chroma高亮，效果更好
+    favicon = "favicon.ico"
+    favicon16x16 = "favicon-16x16.png"
+    favicon32x32 = "favicon-32x32.png"
+    apple_touch_icon = "apple-touch-icon.png"
+
+  # 语言选择器
+  [params.ShowLanguageSelector]
+    enable = true
+
+  # 个人信息
+  [params.profileMode]
+    enabled = true
+    title = "My Awesome Blog"
+    subtitle = "Tech | Life | Thoughts"
+    imageUrl = "profile.png" # 放在 static/ 目录下
+    imageWidth = 120
+    imageHeight = 120
+    
+  # 社交链接
+  [params.socialIcons]
+    [[params.socialIcons.item]]
+      name = "github"
+      url = "https://github.com/ConjugateZRainY"
+    [[params.socialIcons.item]]
+      name = "twitter"
+      url = "https://twitter.com/YOUR_USERNAME"
+      
+# Hugo内置语法高亮
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    style = "dracula" # 一个好看的暗色主题，亮色模式下也适用
